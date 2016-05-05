@@ -1,0 +1,11 @@
+{
+  "port": 4000,
+  "forbid": [],
+  "rewrite": [
+    {
+      "from": "/lib/mood.js",
+      "to": "/dist/mood.js"
+    }
+  ],
+  "spa": "public/index.html"
+}

@@ -4,8 +4,9 @@
   "description": "A face as cart to show emotional states",
   "main": "dist/mood.js",
   "scripts": {
+    "start": "ws",
     "commit": "git-cz",
-    "build": "browserify src/mood.js -o dist/mood.js -t babelify",
+    "build": "browserify src/mood.js -o dist/mood.js -s Moodjs -t babelify",
     "test": "mochify --recursive --transform babelify",
     "test-watch": "npm test -- --watch",
     "test-specific": "mochify --transform babelify --",
@@ -49,6 +50,7 @@
     "eslint-plugin-jsx-a11y": "0.6.2",
     "eslint-plugin-react": "4.3.0",
     "ghooks": "1.2.1",
+    "local-web-server": "1.2.3",
     "mocha": "2.4.5",
     "mochify": "2.17.0"
   },
