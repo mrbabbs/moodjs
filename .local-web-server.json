@@ -3,8 +3,8 @@
   "forbid": [],
   "rewrite": [
     {
-      "from": "/lib/mood.js",
-      "to": "/dist/mood.js"
+      "from": "/lib/mood-browser.js",
+      "to": "/dist/mood-browser.js"
     }
   ],
   "spa": "public/index.html"
