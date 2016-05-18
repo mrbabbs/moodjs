@@ -21,7 +21,7 @@ const MoodJS = {
     return !type? this._faces : this._faces
       .filter(f => {
         const faceId = f.getAttribute('id');
-        return faceId.indexOf('type') >= 0;
+        return faceId.indexOf(type) >= 0;
       });
   },
 
