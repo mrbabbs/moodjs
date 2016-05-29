@@ -1,14 +1,14 @@
-import { version as __version } from '../package.json';
+import { version as _version } from '../package.json';
 
-const MoodJS = {
-  version: __version,
-  _faces: [],
+const MoodJS = (function () {
+  const version = _version;
+  const _faces = [];
 
-  _createId(prefix = '') {
+  function _createId(prefix = '') {
     const randomId = btoa((1 + Math.random()) * 0x10000) ;
 
     return `${prefix}-${randomId}`;
-  },
+  }
 
   /**
   * Return an array contains the list of added DOM face elements
@@ -17,13 +17,13 @@ const MoodJS = {
   * @param type[String] face type to filter (happy, sad, neutral)
   * @return[Array] list of added DOM face element
   **/
-  get(type = '') {
+  function get(type = '') {
     return !type? this._faces : this._faces
       .filter(f => {
         const faceId = f.getAttribute('id');
         return faceId.indexOf(type) >= 0;
       });
-  },
+  }
 
   /**
   * add a specific face type to the DOM using a selector
@@ -31,13 +31,19 @@ const MoodJS = {
   * @param type[String] face to add (happy, sad, neutral)
   * @selector[String] any css selector
   **/
-  add(type, selector) {
+  function add(type, selector) {
     const element = document.querySelector(selector);
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('id', this._createId(type));
+    svg.setAttribute('id', _createId(type));
     element.appendChild(svg);
     this._faces.push(svg);
-  },
-};
+  }
+
+  return {
+    version,
+    add,
+    get,
+  }
+}());
 
 export default MoodJS;
