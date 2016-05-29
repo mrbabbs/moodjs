@@ -12,7 +12,8 @@
     "test": "mochify --recursive --transform babelify",
     "test-watch": "npm test -- --watch",
     "test-specific": "mochify --transform babelify --",
-    "test-specific-watch": "mochify -w --transform babelify --"
+    "test-specific-watch": "mochify -w --transform babelify --",
+    "lint": "eslint -c .eslintrc ./src/**/*.js"
   },
   "repository": {
     "type": "git",
