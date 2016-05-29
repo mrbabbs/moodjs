@@ -3,7 +3,7 @@ import MoodJS from '../src/mood';
 import { version } from '../package.json';
 import { createSVGElement } from './lib/helpers.js'
 
-describe('MoodJS', () => {
+describe.only('MoodJS', () => {
   const happy = 'happy';
   const neutral = 'neutral';
   const sad = 'sad';
@@ -21,7 +21,9 @@ describe('MoodJS', () => {
   });
 
   afterEach(() => {
-    MoodJS._faces = []; // reset only for test
+    while(MoodJS._faces.length) {
+      MoodJS._faces.pop(); // reset only for test
+    }
     div.remove();
   });
 
@@ -88,7 +90,6 @@ describe('MoodJS', () => {
 
     it('returns the list with all the added DOM element if no type as param',
       () => {
-        MoodJS._faces = [];
         MoodJS._faces.push(createSVGElement(happy));
         let actual = MoodJS.get();
         expect(actual).to.be.a('array');
@@ -105,13 +106,13 @@ describe('MoodJS', () => {
 
     it('returns the list with a group of added DOM element based on type',
       () => {
-        MoodJS._faces = [
+        MoodJS._faces.push(
           createSVGElement(happy),
           createSVGElement(happy),
           createSVGElement(sad),
           createSVGElement(neutral),
-          createSVGElement(happy),
-        ];
+          createSVGElement(happy)
+        );
         let actual = MoodJS.get(happy);
         expect(actual).to.have.lengthOf(3);
 

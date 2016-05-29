@@ -1,11 +1,11 @@
 import { version as _version } from '../package.json';
 
-const MoodJS = (function () {
+const MoodJS = (function Mood() {
   const version = _version;
   const _faces = [];
 
   function _createId(prefix = '') {
-    const randomId = btoa((1 + Math.random()) * 0x10000) ;
+    const randomId = btoa((1 + Math.random()) * 0x10000);
 
     return `${prefix}-${randomId}`;
   }
@@ -18,11 +18,13 @@ const MoodJS = (function () {
   * @return[Array] list of added DOM face element
   **/
   function get(type = '') {
-    return !type? this._faces : this._faces
-      .filter(f => {
-        const faceId = f.getAttribute('id');
-        return faceId.indexOf(type) >= 0;
-      });
+    return !type ?
+      _faces :
+      _faces
+        .filter(f => {
+          const faceId = f.getAttribute('id');
+          return faceId.indexOf(type) >= 0;
+        });
   }
 
   /**
@@ -36,14 +38,17 @@ const MoodJS = (function () {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('id', _createId(type));
     element.appendChild(svg);
-    this._faces.push(svg);
+    _faces.push(svg);
   }
 
   return {
     version,
     add,
     get,
-  }
+    // TODO fix with this solution
+    // https://philipwalton.com/articles/how-to-unit-test-private-functions-in-javascript/
+    _faces,
+  };
 }());
 
 export default MoodJS;

@@ -7,7 +7,7 @@ import {
   NEUTRAL_VALUE,
 } from '../src/constants';
 
-describe.only('Face module', () => {
+describe('Face module', () => {
   it('exists', () => {
     expect(Face).to.be.exists;
   });

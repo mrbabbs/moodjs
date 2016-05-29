@@ -1,7 +1,7 @@
 import {
   HAPPY_VALUE,
   SAD_VALUE,
-  NEUTRAL_VALUE
+  NEUTRAL_VALUE,
 } from './constants';
 
 const _type = new WeakMap();
@@ -16,7 +16,9 @@ class Face {
     _type.set(this, type);
   }
 
-  get type() { return _type.get(this) };
+  get type() {
+    return _type.get(this);
+  }
 }
 
 export default Face;
