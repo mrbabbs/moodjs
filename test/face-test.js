@@ -29,7 +29,7 @@ describe('Face module', () => {
       expect(sad.type).to.be.equal(SAD_VALUE);
     });
 
-    it('throw an exception if a not valid type is used', () => {
+    it.only('throw an exception if a not valid type is used', () => {
       expect(() => { const face = new Face()}).to.be.throw(/No valid type/);
       expect(() => {
         const face = new Face('some-type')

@@ -8,11 +8,11 @@ const _type = new WeakMap();
 
 class Face {
   constructor(type) {
-    if (type !== HAPPY_VALUE &&
-        type !== SAD_VALUE &&
-        type !== NEUTRAL_VALUE) {
+    console.log(![HAPPY_VALUE, SAD_VALUE, NEUTRAL_VALUE].includes(type));
+    if ([HAPPY_VALUE, SAD_VALUE, NEUTRAL_VALUE].includes(type)) {
       throw new Error('No valid type');
     }
+
     _type.set(this, type);
   }
 
