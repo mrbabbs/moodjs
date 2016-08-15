@@ -4,9 +4,26 @@
   <meta charset="UTF-8">
   <title></title>
   <script src="lib/mood-browser.js"></script>
+  <style>
+    #faces div {
+      width: 300px;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
- <h1>Test page</h1>
+ <h1>MoodJS test page</h1>
 
+ <div id="faces">
+   <div id="happyFace"></div>
+   <div id="sadFace"></div>
+   <div id="neutralFace"></div>
+ </div>
+
+ <script>
+    MoodJS.add('happy', '#happyFace');
+    MoodJS.add('sad', '#sadFace');
+    MoodJS.add('neutral', '#neutralFace');
+ </script>
 </body>
 </html>
