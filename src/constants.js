@@ -1,3 +1,17 @@
+// Type face
 export const HAPPY_VALUE = 'happy';
 export const SAD_VALUE = 'sad';
 export const NEUTRAL_VALUE = 'neutral';
+
+// Face properties
+export const FACE_SHAPE = [50, 50, 45];
+export const DEFAULT_HASH_COLOR_FACES = {
+  [HAPPY_VALUE]: '#27ae60',
+  [SAD_VALUE]: '#e74c3c',
+  [NEUTRAL_VALUE]: '#f1c40f',
+};
+export const DEFAULT_BASIC_FACE_PROPETIES = {
+  fill: '#ffffff',
+  fillOpacity: 0.5,
+  strokeWidth: 5,
+};
