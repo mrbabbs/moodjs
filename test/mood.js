@@ -3,7 +3,7 @@ import MoodJS from '../src/mood';
 import { version } from '../package.json';
 import { createSVGElement } from './lib/helpers.js'
 
-describe.only('MoodJS', () => {
+describe('MoodJS', () => {
   const happy = 'happy';
   const neutral = 'neutral';
   const sad = 'sad';

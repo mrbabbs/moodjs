@@ -3,6 +3,9 @@ export const HAPPY_VALUE = 'happy';
 export const SAD_VALUE = 'sad';
 export const NEUTRAL_VALUE = 'neutral';
 
+// Prefix
+export const MOOD = 'mood';
+
 // Face properties
 export const FACE_SHAPE = [50, 50, 45];
 export const DEFAULT_HASH_COLOR_FACES = {
