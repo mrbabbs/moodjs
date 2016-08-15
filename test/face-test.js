@@ -69,7 +69,7 @@ describe('Face module', () => {
 
       beforeEach('selects face', () => {
         face = new Face(mood);
-        circleFace = face.svg.querySelector('circle');
+        circleFace = face.svg.querySelector('[data-type=face]');
       });
 
       it('is circle', () => {
