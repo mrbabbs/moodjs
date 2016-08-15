@@ -8,6 +8,10 @@ import {
 } from '../src/constants';
 
 describe('Face module', () => {
+  let happyFace;
+  let sadFace;
+  let neutralFace;
+
   it('exists', () => {
     expect(Face).to.be.exists;
   });
@@ -17,22 +21,23 @@ describe('Face module', () => {
     expect(face).to.be.instanceOf(Face);
   });
 
-  describe('#properties', () => {
+  beforeEach('creates faces', () => {
+    happyFace = new Face(HAPPY_VALUE);
+    sadFace = new Face(SAD_VALUE);
+    neutralFace = new Face(NEUTRAL_VALUE);
+  });
+
+  describe('properties', () => {
     it('has a type property', () => {
-      const happy = new Face(HAPPY_VALUE);
-      expect(happy.type).to.be.equal(HAPPY_VALUE);
-
-      const neutral = new Face(NEUTRAL_VALUE);
-      expect(neutral.type).to.be.equal(NEUTRAL_VALUE);
-
-      const sad = new Face(SAD_VALUE);
-      expect(sad.type).to.be.equal(SAD_VALUE);
+      expect(happyFace.type).to.be.equal(HAPPY_VALUE);
+      expect(neutralFace.type).to.be.equal(NEUTRAL_VALUE);
+      expect(sadFace.type).to.be.equal(SAD_VALUE);
     });
 
-    it.only('throw an exception if a not valid type is used', () => {
-      expect(() => { const face = new Face()}).to.be.throw(/No valid type/);
+    it('throw an exception if a not valid type is used', () => {
+      expect(() => { happyFace = new Face(); }).to.be.throw(/No valid type/);
       expect(() => {
-        const face = new Face('some-type')
+        happyFace = new Face('some-type');
       }).to.be.throw(/No valid type/);
     });
   });

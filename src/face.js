@@ -1,24 +1,25 @@
+import { privateEnv } from './helper/helpers';
 import {
   HAPPY_VALUE,
   SAD_VALUE,
   NEUTRAL_VALUE,
 } from './constants';
 
-const _type = new WeakMap();
+
+const _private = privateEnv();
 
 class Face {
   constructor(type) {
-    console.log(![HAPPY_VALUE, SAD_VALUE, NEUTRAL_VALUE].includes(type));
-    if ([HAPPY_VALUE, SAD_VALUE, NEUTRAL_VALUE].includes(type)) {
+    if (![HAPPY_VALUE, SAD_VALUE, NEUTRAL_VALUE].includes(type)) {
       throw new Error('No valid type');
     }
 
-    _type.set(this, type);
+    // set private properties
+    _private(this).type = type;
+
   }
 
-  get type() {
-    return _type.get(this);
-  }
+  get type() { return _private(this).type; }
 }
 
 export default Face;
