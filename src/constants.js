@@ -15,6 +15,5 @@ export const DEFAULT_HASH_COLOR_FACES = {
 };
 export const DEFAULT_BASIC_FACE_PROPETIES = {
   fill: '#ffffff',
-  fillOpacity: 0.5,
   strokeWidth: 5,
 };
