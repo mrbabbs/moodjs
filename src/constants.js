@@ -10,6 +10,11 @@ export const MOOD = 'mood';
 export const FACE_SHAPE = [50, 50, 45];
 export const LEFT_EYE_SHAPE = [30, 30, 7];
 export const RIGHT_EYE_SHAPE = [70, 30, 7];
+export const MOUTH_SHAPE = {
+  [HAPPY_VALUE]: 'M30 70 C 35 85 65 85, 70, 70',
+  [SAD_VALUE]: 'M30 70 C 35 55 65 55, 70, 70',
+  [NEUTRAL_VALUE]: 'M30 70 H 70 V 75 H 30 L 30 70',
+};
 export const DEFAULT_HASH_COLOR_FACES = {
   [HAPPY_VALUE]: '#27ae60',
   [SAD_VALUE]: '#e74c3c',
@@ -22,4 +27,7 @@ export const DEFAULT_BASIC_FACE_PROPETIES = {
 };
 export const DEFAULT_BASIC_EYE_PROPETIES = {
   'data-type': 'eye',
+};
+export const DEFAULT_BASIC_MOUTH_PROPETIES = {
+  'data-type': 'mouth',
 };

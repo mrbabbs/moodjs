@@ -68,11 +68,13 @@ describe('Face module', () => {
       let face;
       let rtEye;
       let ltEye;
+      let mouth;
 
       beforeEach('selects face', () => {
         face = new Face(mood);
         circleFace = face.svg.querySelector('[data-type=face]');
         [ltEye, rtEye] = face.svg.querySelectorAll('[data-type=eye]') || [];
+        mouth = face.svg.querySelector('[data-type=mouth]');
       });
 
       it('is circle', () => {
@@ -109,15 +111,11 @@ describe('Face module', () => {
       it('has a nose', () => {
       });
 
-      context('mouth', () => {
-        it('is happy', () => {
-        });
-
-        it('is sad', () => {
-        });
-
-        it('is neutral', () => {
-        });
+      it('has is a mouth', () => {
+        expect(mouth).to.exist;
+        const actual = mouth.getAttribute('fill');
+        const expected = DEFAULT_HASH_COLOR_FACES[mood];
+        expect(actual).to.be.equal(expected);
       });
     });
   });

@@ -8,9 +8,11 @@ import {
   FACE_SHAPE,
   LEFT_EYE_SHAPE,
   RIGHT_EYE_SHAPE,
+  MOUTH_SHAPE,
   DEFAULT_HASH_COLOR_FACES,
   DEFAULT_BASIC_FACE_PROPETIES,
   DEFAULT_BASIC_EYE_PROPETIES,
+  DEFAULT_BASIC_MOUTH_PROPETIES,
 } from './constants';
 
 
@@ -58,6 +60,15 @@ function _drawFace(paper, mood) {
 
   ltEye.attr(attrEye);
   rtEye.attr(attrEye);
+
+  const mouth = paper.path(MOUTH_SHAPE[mood]);
+  const attrMouth = Object.assign(
+    {},
+    DEFAULT_BASIC_MOUTH_PROPETIES,
+    { fill: DEFAULT_HASH_COLOR_FACES[mood] }
+  );
+
+  mouth.attr(attrMouth);
 }
 
 class Face {
