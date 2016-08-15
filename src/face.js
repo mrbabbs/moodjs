@@ -6,8 +6,11 @@ import {
   SAD_VALUE,
   NEUTRAL_VALUE,
   FACE_SHAPE,
+  LEFT_EYE_SHAPE,
+  RIGHT_EYE_SHAPE,
   DEFAULT_HASH_COLOR_FACES,
   DEFAULT_BASIC_FACE_PROPETIES,
+  DEFAULT_BASIC_EYE_PROPETIES,
 } from './constants';
 
 
@@ -44,6 +47,17 @@ function _drawFace(paper, mood) {
   );
 
   face.attr(attrFace);
+
+  const ltEye = paper.circle(...LEFT_EYE_SHAPE);
+  const rtEye = paper.circle(...RIGHT_EYE_SHAPE);
+  const attrEye = Object.assign(
+    {},
+    DEFAULT_BASIC_EYE_PROPETIES,
+    { fill: DEFAULT_HASH_COLOR_FACES[mood] }
+  );
+
+  ltEye.attr(attrEye);
+  rtEye.attr(attrEye);
 }
 
 class Face {
