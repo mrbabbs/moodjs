@@ -131,6 +131,14 @@ describe('Face module', () => {
           expect(actual).to.contain('display: none');
         });
       });
+
+      describe('.showNose()', () => {
+        it('shows the nose if it is hidden', () => {
+          face.showNose();
+          const actual = nose.getAttribute('style');
+          expect(actual).to.contain('display: block');
+        });
+      });
     });
   });
 });

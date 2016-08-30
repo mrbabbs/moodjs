@@ -139,6 +139,10 @@ class Face {
   hideNose() {
     _private(this).nose.attr({ display: 'none' });
   }
+
+  showNose() {
+    _private(this).nose.attr({ display: 'block' });
+  }
 }
 
 export default Face;
