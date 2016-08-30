@@ -9,10 +9,12 @@ import {
   LEFT_EYE_SHAPE,
   RIGHT_EYE_SHAPE,
   MOUTH_SHAPE,
+  NOSE_SHAPE,
   DEFAULT_HASH_COLOR_FACES,
   DEFAULT_BASIC_FACE_PROPETIES,
   DEFAULT_BASIC_EYE_PROPETIES,
   DEFAULT_BASIC_MOUTH_PROPETIES,
+  DEFAULT_BASIC_NOSE_PROPETIES,
 } from './constants';
 
 
@@ -38,6 +40,19 @@ function _createSVGNode(mood, id) {
 
 function _createPaper(svgNode) {
   return Snap(svgNode);
+}
+
+function _createNose(paper, color) {
+  const nose = paper.path(NOSE_SHAPE);
+  const attrNose = Object.assign(
+    {},
+    DEFAULT_BASIC_NOSE_PROPETIES,
+    { stroke: color }
+  );
+
+  nose.attr(attrNose);
+
+  return nose;
 }
 
 function _drawFace(paper, mood) {
@@ -69,6 +84,8 @@ function _drawFace(paper, mood) {
   );
 
   mouth.attr(attrMouth);
+
+  _createNose(paper, DEFAULT_HASH_COLOR_FACES[mood]);
 }
 
 class Face {
