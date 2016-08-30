@@ -42,7 +42,7 @@ function _createPaper(svgNode) {
   return Snap(svgNode);
 }
 
-function _createNose(paper, shape, color) {
+function _createNose(paper, { shape, color }) {
   const nose = paper.path(shape);
   const attrNose = Object.assign(
     {},
@@ -55,7 +55,7 @@ function _createNose(paper, shape, color) {
   return nose;
 }
 
-function _createMouth(paper, shape, color) {
+function _createMouth(paper, { shape, color }) {
   const mouth = paper.path(shape);
   const attrMouth = Object.assign(
     {},
@@ -68,7 +68,7 @@ function _createMouth(paper, shape, color) {
   return mouth;
 }
 
-function _createEye(paper, shape, color) {
+function _createEye(paper, { shape, color }) {
   const eye = paper.circle(...shape);
   const attrEye = Object.assign(
     {},
@@ -91,10 +91,22 @@ function _drawFace(paper, mood) {
 
   face.attr(attrFace);
 
-  _createEye(paper, LEFT_EYE_SHAPE, DEFAULT_HASH_COLOR_FACES[mood]);
-  _createEye(paper, RIGHT_EYE_SHAPE, DEFAULT_HASH_COLOR_FACES[mood]);
-  _createMouth(paper, MOUTH_SHAPE[mood], DEFAULT_HASH_COLOR_FACES[mood]);
-  _createNose(paper, NOSE_SHAPE, DEFAULT_HASH_COLOR_FACES[mood]);
+  _createEye(paper, {
+    shape: LEFT_EYE_SHAPE,
+    color: DEFAULT_HASH_COLOR_FACES[mood],
+  });
+  _createEye(paper, {
+    shape: RIGHT_EYE_SHAPE,
+    color: DEFAULT_HASH_COLOR_FACES[mood],
+  });
+  _createMouth(paper, {
+    shape: MOUTH_SHAPE[mood],
+    color: DEFAULT_HASH_COLOR_FACES[mood],
+  });
+  _createNose(paper, {
+    shape: NOSE_SHAPE,
+    color: DEFAULT_HASH_COLOR_FACES[mood],
+  });
 }
 
 class Face {
