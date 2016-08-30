@@ -123,6 +123,22 @@ describe('Face module', () => {
         const expected = DEFAULT_HASH_COLOR_FACES[mood];
         expect(actual).to.be.equal(expected);
       });
+
+      describe('.hideNose()', () => {
+        it('hides the nose if it is shown', () => {
+          face.hideNose();
+          const actual = nose.getAttribute('style');
+          expect(actual).to.contain('display: none');
+        });
+      });
+
+      describe('.showNose()', () => {
+        it('shows the nose if it is hidden', () => {
+          face.showNose();
+          const actual = nose.getAttribute('style');
+          expect(actual).to.contain('display: block');
+        });
+      });
     });
   });
 });
