@@ -139,6 +139,40 @@ describe('Face module', () => {
           expect(actual).to.contain('display: block');
         });
       });
+
+      describe('.changeNoseColor([color])', () => {
+        it('changes color of the nose', () => {
+          let color = '#ff0000';
+          face.changeColorNose(color);
+          let actual = nose.getAttribute('stroke');
+          expect(actual).to.equal(color);
+
+          color = '#0000ff';
+          face.changeColorNose(color);
+          actual = nose.getAttribute('stroke');
+          expect(actual).to.equal(color);
+        });
+
+        it('uses default color if no value is provided', () => {
+          face.changeColorNose();
+          const actual = nose.getAttribute('stroke');
+          const expected = DEFAULT_HASH_COLOR_FACES[mood];
+          expect(actual).to.equal(expected);
+        });
+
+        it('throws an exception if a wrong param is provided', () => {
+          // missing hash char
+          expect(() => { face.changeColorNose('strings'); }).to.throw(Error);
+          // wrong size
+          expect(() => { face.changeColorNose('#1234567'); }).to.throw(Error);
+          expect(() => { face.changeColorNose('#1'); }).to.throw(Error);
+          expect(() => { face.changeColorNose('#1a'); }).to.throw(Error);
+          expect(() => { face.changeColorNose('#1aaa'); }).to.throw(Error);
+          // wrong color value
+          expect(() => { face.changeColorNose('#www'); }).to.throw(Error);
+          expect(() => { face.changeColorNose('#zzzzzz'); }).to.throw(Error);
+        });
+      });
     });
   });
 });

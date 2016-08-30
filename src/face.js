@@ -143,6 +143,22 @@ class Face {
   showNose() {
     _private(this).nose.attr({ display: 'block' });
   }
+
+  changeColorNose(color) {
+    const { nose, type } = _private(this);
+
+    if (color) {
+      const throwError = () => { throw new Error('No valid color.'); };
+
+      if (![4, 7].includes(color.length)) throwError();
+      if (!color.startsWith('#')) throwError();
+
+      const rgbValue = color.substring(1).split('');
+      if (!rgbValue.every(v => v.match(/[a-fA-F0-9]/))) throwError();
+    }
+
+    nose.attr({ stroke: color || DEFAULT_HASH_COLOR_FACES[type] });
+  }
 }
 
 export default Face;
