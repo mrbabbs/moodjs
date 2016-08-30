@@ -20,7 +20,8 @@ const MoodJS = (function Mood() {
   * add a specific face type to the DOM using a selector
   *
   * @param type[String] face to add (happy, sad, neutral)
-  * @selector[String] any css selector
+  * @param iselector[String] any css selector
+  * @return {Face} object ref
   **/
   function add(type, selector) {
     const element = document.querySelector(selector);
@@ -29,6 +30,8 @@ const MoodJS = (function Mood() {
 
     element.appendChild(svg);
     _faces.push(face);
+
+    return face;
   }
 
   return {

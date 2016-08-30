@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import MoodJS from '../src/mood';
 import { version } from '../package.json';
 import { createSVGElement } from './lib/helpers.js'
+import Face from '../src/face';
 
 describe('MoodJS', () => {
   const happy = 'happy';
@@ -45,6 +46,10 @@ describe('MoodJS', () => {
       const element = div.querySelector('svg');
       const actual = element.getAttribute('id');
       expect(actual).to.exist;
+    });
+
+    it('returns a face instance', () => {
+      expect(MoodJS.add('happy', selector)).to.be.an.instanceOf(Face);
     });
 
     context(`${happy} face`, () => {
