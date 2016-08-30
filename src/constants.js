@@ -15,6 +15,7 @@ export const MOUTH_SHAPE = {
   [SAD_VALUE]: 'M30 70 C 35 55 65 55, 70, 70',
   [NEUTRAL_VALUE]: 'M30 70 H 70 V 75 H 30 L 30 70',
 };
+export const NOSE_SHAPE = 'M45 47 L 50 52 L 60 40 L 50 52 L 45 47';
 export const DEFAULT_HASH_COLOR_FACES = {
   [HAPPY_VALUE]: '#27ae60',
   [SAD_VALUE]: '#e74c3c',
@@ -30,4 +31,8 @@ export const DEFAULT_BASIC_EYE_PROPETIES = {
 };
 export const DEFAULT_BASIC_MOUTH_PROPETIES = {
   'data-type': 'mouth',
+};
+export const DEFAULT_BASIC_NOSE_PROPETIES = {
+  'data-type': 'nose',
+  strokeWidth: 5,
 };
