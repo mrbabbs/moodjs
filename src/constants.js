@@ -12,7 +12,7 @@ export const LEFT_EYE_SHAPE = [30, 30, 7];
 export const RIGHT_EYE_SHAPE = [70, 30, 7];
 export const MOUTH_SHAPE = {
   [HAPPY_VALUE]: 'M30 70 C 35 85 65 85, 70, 70',
-  [SAD_VALUE]: 'M30 70 C 35 55 65 55, 70, 70',
+  [SAD_VALUE]: 'M30 80 C 35 65 65 65, 70, 80',
   [NEUTRAL_VALUE]: 'M30 70 H 70 V 75 H 30 L 30 70',
 };
 export const NOSE_SHAPE = 'M45 47 L 50 52 L 60 40 L 50 52 L 45 47';
