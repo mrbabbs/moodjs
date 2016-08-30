@@ -1,7 +1,8 @@
 import { expect } from 'chai';
 import MoodJS from '../../src/mood';
+import Face from '../../src/face';
 
-xdescribe('MoodJS', () => {
+describe('MoodJS', () => {
   it('creates a global var called MoodJS', () => {
     expect(MoodJS).to.not.be.undefined;
   });
@@ -11,7 +12,7 @@ xdescribe('MoodJS', () => {
     const selector = '#faceContainer';
     beforeEach('create a div where attach the face', () => {
       div = document.createElement('div');
-      div.setAttribute(selector.replace('#', ''));
+      div.setAttribute('id', selector.replace('#', ''));
       document.body.appendChild(div);
     });
 
@@ -22,19 +23,32 @@ xdescribe('MoodJS', () => {
     it('adds an happy face to a specific element by selector', () => {
       MoodJS.add('happy', selector);
       const actual = document.querySelector(`${selector} svg`);
-      // TODO improve test
       expect(actual).to.exist;
       expect(actual.getAttribute('id')).to.contain('happy');
     });
 
-    it('adds a neutral face to a specific element by selector');
+    it('adds a neutral face to a specific element by selector', () => {
+      MoodJS.add('neutral', selector);
+      const actual = document.querySelector(`${selector} svg`);
+      expect(actual).to.exist;
+      expect(actual.getAttribute('id')).to.contain('neutral');
+    });
 
-    it('adds a sad face to a specific element by selector');
+    it('adds a sad face to a specific element by selector', () => {
+      MoodJS.add('sad', selector);
+      const actual = document.querySelector(`${selector} svg`);
+      expect(actual).to.exist;
+      expect(actual.getAttribute('id')).to.contain('sad');
+    });
 
-    it('returns a #Face');
+    it('returns a #Face', () => {
+      expect(MoodJS.add('happy', selector)).to.be.an.instanceOf(Face);
+    });
+
+    it('adds a face using the provided options')
   });
 
-  describe('#smile(selector[, options])', () => {
+  describe('#happy(selector[, options])', () => {
     it('adds an happy face to a specific element by selector');
 
     it('returns a #Face');
