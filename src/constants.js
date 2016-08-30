@@ -33,6 +33,7 @@ export const DEFAULT_BASIC_MOUTH_PROPETIES = {
   'data-type': 'mouth',
 };
 export const DEFAULT_BASIC_NOSE_PROPETIES = {
+  display: 'block',
   'data-type': 'nose',
   strokeWidth: 5,
 };

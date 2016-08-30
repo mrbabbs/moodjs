@@ -103,10 +103,12 @@ function _drawFace(paper, mood) {
     shape: MOUTH_SHAPE[mood],
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
-  _createNose(paper, {
+  face.nose = _createNose(paper, {
     shape: NOSE_SHAPE,
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
+
+  return face;
 }
 
 class Face {
@@ -121,7 +123,8 @@ class Face {
     _private(this).svg = _createSVGNode(type, _private(this).id);
     _private(this).paper = _createPaper(_private(this).svg);
 
-    _drawFace(_private(this).paper, type);
+    const face = _drawFace(_private(this).paper, type);
+    _private(this).nose = face.nose;
     // set public properties
   }
 
@@ -132,6 +135,10 @@ class Face {
   get svg() { return _private(this).svg; }
 
   get paper() { return _private(this).paper; }
+
+  hideNose() {
+    _private(this).nose.attr({ display: 'none' });
+  }
 }
 
 export default Face;
