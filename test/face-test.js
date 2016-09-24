@@ -175,4 +175,28 @@ describe('Face module', () => {
       });
     });
   });
+
+  describe('methods', () => {
+    describe('.setPercentage', () => {
+      it('throws an expection if the value is not a number', () => {
+        expect(() => { happyFace.setPercentage('string'); }).to.throw(Error);
+        expect(() => { happyFace.setPercentage(''); }).to.not.throw(Error);
+        expect(() => { happyFace.setPercentage(); }).to.not.throw(Error);
+      });
+    });
+
+    describe('.setPercentageWithAnimation', () => {
+      it('throws an expection if the value is not a number', () => {
+        expect(() => {
+          happyFace.setPercentageWithAnimation('string');
+        }).to.throw(Error);
+        expect(() => {
+          happyFace.setPercentageWithAnimation('');
+        }).to.not.throw(Error);
+        expect(() => {
+          happyFace.setPercentageWithAnimation();
+        }).to.not.throw(Error);
+      });
+    });
+  });
 });

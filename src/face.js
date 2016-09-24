@@ -1,5 +1,6 @@
 import Snap from 'snapsvg';
 import { privateEnv } from './helper/helpers';
+import Percentage from './Percentage';
 import {
   MOOD,
   HAPPY_VALUE,
@@ -122,6 +123,12 @@ class Face {
     _private(this).id = _createId(type);
     _private(this).svg = _createSVGNode(type, _private(this).id);
     _private(this).paper = _createPaper(_private(this).svg);
+    _private(this).text = new Percentage(_private(this).paper, {
+      properties: {
+        fill: DEFAULT_HASH_COLOR_FACES[type],
+        stroke: DEFAULT_HASH_COLOR_FACES[type],
+      },
+    });
 
     const face = _drawFace(_private(this).paper, type);
     _private(this).nose = face.nose;
@@ -158,6 +165,24 @@ class Face {
     }
 
     nose.attr({ stroke: color || DEFAULT_HASH_COLOR_FACES[type] });
+  }
+
+  setPercentage(value = 0) {
+    if (isNaN(Number(value))) {
+      throw Error('The value is not a number.');
+    }
+
+    _private(this).text.setValue(value);
+  }
+
+  setPercentageWithAnimation(value = 0) {
+    if (isNaN(Number(value))) {
+      throw Error('The value is not a number.');
+    }
+
+    Snap.animate(0, value, (val) => {
+      this.setPercentage(val);
+    }, 1000);
   }
 }
 
