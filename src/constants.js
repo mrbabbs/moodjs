@@ -37,3 +37,12 @@ export const DEFAULT_BASIC_NOSE_PROPETIES = {
   'data-type': 'nose',
   strokeWidth: 5,
 };
+
+// Percentage properties
+export const DEFAULT_PERCENTAGE_OPTIONS_TEXT = { x: -1, y: 95, text: '0%', color: '#27ae60' };
+export const DEFAULT_PERCENTAGE_PROPERTIES = {
+  fill: '#27ae60',
+  stroke: '#27ae60',
+  fontFamily: 'arial',
+  fontSize: '18px',
+};
