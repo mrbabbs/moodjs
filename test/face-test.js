@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import { expect } from 'chai';
 import Snap from 'snapsvg';
-import Face from '../src/face';
+import Face from '../src/Face';
 import {
   HAPPY_VALUE,
   SAD_VALUE,

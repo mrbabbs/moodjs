@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import MoodJS from '../src/mood';
 import { version } from '../package.json';
-import { createSVGElement } from './lib/helpers.js'
-import Face from '../src/face';
+import { createSVGElement } from './lib/helpers';
+import Face from '../src/Face';
 
 describe('MoodJS', () => {
   const happy = 'happy';
@@ -22,7 +22,7 @@ describe('MoodJS', () => {
   });
 
   afterEach(() => {
-    while(MoodJS._faces.length) {
+    while (MoodJS._faces.length) {
       MoodJS._faces.pop(); // reset only for test
     }
     div.remove();
