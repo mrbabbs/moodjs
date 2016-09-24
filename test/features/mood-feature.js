@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import MoodJS from '../../src/mood';
-import Face from '../../src/face';
+import Face from '../../src/Face';
 
 describe('MoodJS', () => {
   it('creates a global var called MoodJS', () => {

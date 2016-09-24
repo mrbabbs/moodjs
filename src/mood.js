@@ -1,5 +1,5 @@
 import { version as _version } from '../package.json';
-import Face from './face';
+import Face from './Face';
 
 const MoodJS = (function Mood() {
   const version = _version;

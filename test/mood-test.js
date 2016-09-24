@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import MoodJS from '../src/mood';
 import { version } from '../package.json';
 import { createSVGElement } from './lib/helpers.js'
-import Face from '../src/face';
+import Face from '../src/Face';
 
 describe('MoodJS', () => {
   const happy = 'happy';
