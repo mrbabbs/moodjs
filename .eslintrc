@@ -2,6 +2,16 @@
   "extends": "airbnb/base",
   "env": {
     "mocha": true,
-    "es6": true
+    "es6": true,
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "spread": true
+    }
+  },
+  "rules": {
+    "no-unused-expressions": "off",
+    "new-cap": "off",
   }
 }
