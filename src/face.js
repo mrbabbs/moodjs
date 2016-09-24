@@ -16,6 +16,7 @@ import {
   DEFAULT_BASIC_EYE_PROPERTIES,
   DEFAULT_BASIC_MOUTH_PROPERTIES,
   DEFAULT_BASIC_NOSE_PROPERTIES,
+  DEFAULT_FACE_SCALING,
 } from './constants';
 
 
@@ -92,24 +93,28 @@ function _drawFace(paper, mood) {
 
   face.attr(attrFace);
 
-  _createEye(paper, {
+  const ltEye = _createEye(paper, {
     shape: LEFT_EYE_SHAPE,
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
-  _createEye(paper, {
+  const rtEye = _createEye(paper, {
     shape: RIGHT_EYE_SHAPE,
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
-  _createMouth(paper, {
+  const mouth = _createMouth(paper, {
     shape: MOUTH_SHAPE[mood],
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
-  face.nose = _createNose(paper, {
+  const nose = _createNose(paper, {
     shape: NOSE_SHAPE,
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
 
-  return face;
+  const group = paper.g(face, mouth, ltEye, rtEye, nose);
+
+  group.attr(DEFAULT_FACE_SCALING);
+
+  return { face, nose, mouth, ltEye, rtEye };
 }
 
 class Face {
@@ -130,8 +135,9 @@ class Face {
       },
     });
 
-    const face = _drawFace(_private(this).paper, type);
-    _private(this).nose = face.nose;
+    const { nose } = _drawFace(_private(this).paper, type);
+    _private(this).nose = nose;
+
     // set public properties
   }
 
