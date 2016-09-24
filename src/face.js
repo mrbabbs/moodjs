@@ -11,10 +11,10 @@ import {
   MOUTH_SHAPE,
   NOSE_SHAPE,
   DEFAULT_HASH_COLOR_FACES,
-  DEFAULT_BASIC_FACE_PROPETIES,
-  DEFAULT_BASIC_EYE_PROPETIES,
-  DEFAULT_BASIC_MOUTH_PROPETIES,
-  DEFAULT_BASIC_NOSE_PROPETIES,
+  DEFAULT_BASIC_FACE_PROPERTIES,
+  DEFAULT_BASIC_EYE_PROPERTIES,
+  DEFAULT_BASIC_MOUTH_PROPERTIES,
+  DEFAULT_BASIC_NOSE_PROPERTIES,
 } from './constants';
 
 
@@ -46,7 +46,7 @@ function _createNose(paper, { shape, color }) {
   const nose = paper.path(shape);
   const attrNose = Object.assign(
     {},
-    DEFAULT_BASIC_NOSE_PROPETIES,
+    DEFAULT_BASIC_NOSE_PROPERTIES,
     { stroke: color }
   );
 
@@ -59,7 +59,7 @@ function _createMouth(paper, { shape, color }) {
   const mouth = paper.path(shape);
   const attrMouth = Object.assign(
     {},
-    DEFAULT_BASIC_MOUTH_PROPETIES,
+    DEFAULT_BASIC_MOUTH_PROPERTIES,
     { fill: color }
   );
 
@@ -72,7 +72,7 @@ function _createEye(paper, { shape, color }) {
   const eye = paper.circle(...shape);
   const attrEye = Object.assign(
     {},
-    DEFAULT_BASIC_EYE_PROPETIES,
+    DEFAULT_BASIC_EYE_PROPERTIES,
     { fill: color }
   );
 
@@ -85,7 +85,7 @@ function _drawFace(paper, mood) {
   const face = paper.circle(...FACE_SHAPE);
   const attrFace = Object.assign(
     {},
-    DEFAULT_BASIC_FACE_PROPETIES,
+    DEFAULT_BASIC_FACE_PROPERTIES,
     { stroke: DEFAULT_HASH_COLOR_FACES[mood] }
   );
 

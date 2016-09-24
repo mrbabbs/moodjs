@@ -21,18 +21,18 @@ export const DEFAULT_HASH_COLOR_FACES = {
   [SAD_VALUE]: '#e74c3c',
   [NEUTRAL_VALUE]: '#f1c40f',
 };
-export const DEFAULT_BASIC_FACE_PROPETIES = {
+export const DEFAULT_BASIC_FACE_PROPERTIES = {
   fill: '#ffffff',
   strokeWidth: 5,
   'data-type': 'face',
 };
-export const DEFAULT_BASIC_EYE_PROPETIES = {
+export const DEFAULT_BASIC_EYE_PROPERTIES = {
   'data-type': 'eye',
 };
-export const DEFAULT_BASIC_MOUTH_PROPETIES = {
+export const DEFAULT_BASIC_MOUTH_PROPERTIES = {
   'data-type': 'mouth',
 };
-export const DEFAULT_BASIC_NOSE_PROPETIES = {
+export const DEFAULT_BASIC_NOSE_PROPERTIES = {
   display: 'block',
   'data-type': 'nose',
   strokeWidth: 5,
