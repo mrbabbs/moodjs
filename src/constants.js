@@ -42,7 +42,7 @@ export const DEFAULT_FACE_SCALING = {
 };
 
 // Percentage properties
-export const DEFAULT_PERCENTAGE_OPTIONS_TEXT = { x: -1, y: 95, text: '0%', color: '#27ae60' };
+export const DEFAULT_PERCENTAGE_OPTIONS_TEXT = { x: 0, y: 95, text: '0%', color: '#27ae60' };
 export const DEFAULT_PERCENTAGE_PROPERTIES = {
   fill: '#27ae60',
   stroke: '#27ae60',
