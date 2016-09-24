@@ -1,5 +1,6 @@
 import Snap from 'snapsvg';
 import { privateEnv } from './helper/helpers';
+import Percentage from './Percentage';
 import {
   MOOD,
   HAPPY_VALUE,
@@ -15,6 +16,7 @@ import {
   DEFAULT_BASIC_EYE_PROPERTIES,
   DEFAULT_BASIC_MOUTH_PROPERTIES,
   DEFAULT_BASIC_NOSE_PROPERTIES,
+  DEFAULT_FACE_SCALING,
 } from './constants';
 
 
@@ -91,24 +93,28 @@ function _drawFace(paper, mood) {
 
   face.attr(attrFace);
 
-  _createEye(paper, {
+  const ltEye = _createEye(paper, {
     shape: LEFT_EYE_SHAPE,
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
-  _createEye(paper, {
+  const rtEye = _createEye(paper, {
     shape: RIGHT_EYE_SHAPE,
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
-  _createMouth(paper, {
+  const mouth = _createMouth(paper, {
     shape: MOUTH_SHAPE[mood],
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
-  face.nose = _createNose(paper, {
+  const nose = _createNose(paper, {
     shape: NOSE_SHAPE,
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
 
-  return face;
+  const group = paper.g(face, mouth, ltEye, rtEye, nose);
+
+  group.attr(DEFAULT_FACE_SCALING);
+
+  return { face, nose, mouth, ltEye, rtEye };
 }
 
 class Face {
@@ -122,9 +128,16 @@ class Face {
     _private(this).id = _createId(type);
     _private(this).svg = _createSVGNode(type, _private(this).id);
     _private(this).paper = _createPaper(_private(this).svg);
+    _private(this).text = new Percentage(_private(this).paper, {
+      properties: {
+        fill: DEFAULT_HASH_COLOR_FACES[type],
+        stroke: DEFAULT_HASH_COLOR_FACES[type],
+      },
+    });
 
-    const face = _drawFace(_private(this).paper, type);
-    _private(this).nose = face.nose;
+    const { nose } = _drawFace(_private(this).paper, type);
+    _private(this).nose = nose;
+
     // set public properties
   }
 
@@ -158,6 +171,24 @@ class Face {
     }
 
     nose.attr({ stroke: color || DEFAULT_HASH_COLOR_FACES[type] });
+  }
+
+  setPercentage(value = 0) {
+    if (isNaN(Number(value))) {
+      throw Error('The value is not a number.');
+    }
+
+    _private(this).text.setValue(value);
+  }
+
+  setPercentageWithAnimation(value = 0) {
+    if (isNaN(Number(value))) {
+      throw Error('The value is not a number.');
+    }
+
+    Snap.animate(0, value, (val) => {
+      this.setPercentage(val);
+    }, 1000);
   }
 }
 
