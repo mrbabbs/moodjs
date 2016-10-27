@@ -151,10 +151,14 @@ class Face {
 
   hideNose() {
     _private(this).nose.attr({ display: 'none' });
+
+    return this;
   }
 
   showNose() {
     _private(this).nose.attr({ display: 'block' });
+
+    return this;
   }
 
   changeColorNose(color) {
@@ -171,6 +175,8 @@ class Face {
     }
 
     nose.attr({ stroke: color || DEFAULT_HASH_COLOR_FACES[type] });
+
+    return this;
   }
 
   setPercentage(value = 0) {
@@ -179,6 +185,8 @@ class Face {
     }
 
     _private(this).text.setValue(value);
+
+    return this;
   }
 
   setPercentageWithAnimation(value = 0) {
@@ -189,6 +197,8 @@ class Face {
     Snap.animate(0, value, (val) => {
       this.setPercentage(val);
     }, 1000);
+
+    return this;
   }
 }
 
