@@ -21,9 +21,13 @@
  </div>
 
  <script>
-    MoodJS.add('happy', '#happyFace');
-    MoodJS.add('sad', '#sadFace');
-    MoodJS.add('neutral', '#neutralFace');
+    MoodJS.add('happy', '#happyFace')
+      .setPercentageWithAnimation(22);
+    MoodJS.add('sad', '#sadFace')
+      .setPercentageWithAnimation(52);
+    MoodJS.add('neutral', '#neutralFace')
+      .setPercentage(74)
+      .changeColorNose('#999999');
  </script>
 </body>
 </html>
