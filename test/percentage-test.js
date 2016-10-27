@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Snap from 'snapsvg';
-import Percentage from '../src/percentage';
+import Percentage from '../src/Percentage';
 import { createSVGElement } from './lib/helpers';
 
 describe('Percentage module', () => {
