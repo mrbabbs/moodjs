@@ -1,5 +1,5 @@
 import Snap from 'snapsvg';
-import { privateEnv } from './helper/helpers';
+import { privateEnv } from './helpers/private-env';
 import Percentage from './Percentage';
 import {
   MOOD,
