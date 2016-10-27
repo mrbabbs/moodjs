@@ -27,6 +27,8 @@ class Percentage {
   setValue(value) {
     _private(this).percentage.attr({ text: `${Math.round(value)}%` });
     _private(this).value = value;
+
+    return this;
   }
 
   get value() { return _private(this).value; }

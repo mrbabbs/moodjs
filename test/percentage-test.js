@@ -14,4 +14,13 @@ describe('Percentage module', () => {
     const percentage = new Percentage(paper);
     expect(percentage).to.be.instanceOf(Percentage);
   });
+
+  describe('setValue', () => {
+    it('returns this', () => {
+      const svg = createSVGElement('sad');
+      const paper = Snap(svg);
+      const percentage = new Percentage(paper);
+      expect(percentage.setValue(10)).to.eql(percentage);
+    });
+  });
 });
