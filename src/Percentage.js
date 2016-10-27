@@ -1,4 +1,4 @@
-import { privateEnv } from './helper/helpers';
+import { privateEnv } from './helpers/private-env';
 import {
   DEFAULT_PERCENTAGE_OPTIONS_TEXT,
   DEFAULT_PERCENTAGE_PROPERTIES,
