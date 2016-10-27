@@ -130,6 +130,10 @@ describe('Face module', () => {
           const actual = nose.getAttribute('style');
           expect(actual).to.contain('display: none');
         });
+
+        it('returns this', () => {
+          expect(face.hideNose()).to.eql(face);
+        });
       });
 
       describe('.showNose()', () => {
@@ -137,6 +141,10 @@ describe('Face module', () => {
           face.showNose();
           const actual = nose.getAttribute('style');
           expect(actual).to.contain('display: block');
+        });
+
+        it('returns this', () => {
+          expect(face.showNose()).to.eql(face);
         });
       });
 
@@ -172,6 +180,10 @@ describe('Face module', () => {
           expect(() => { face.changeColorNose('#www'); }).to.throw(Error);
           expect(() => { face.changeColorNose('#zzzzzz'); }).to.throw(Error);
         });
+
+        it('returns this', () => {
+          expect(face.changeColorNose()).to.eql(face);
+        });
       });
     });
   });
@@ -183,6 +195,10 @@ describe('Face module', () => {
         expect(() => { happyFace.setPercentage(''); }).to.not.throw(Error);
         expect(() => { happyFace.setPercentage(); }).to.not.throw(Error);
       });
+
+        it('returns this', () => {
+          expect(happyFace.setPercentage(10)).to.eql(happyFace);
+        });
     });
 
     describe('.setPercentageWithAnimation', () => {
@@ -196,6 +212,10 @@ describe('Face module', () => {
         expect(() => {
           happyFace.setPercentageWithAnimation();
         }).to.not.throw(Error);
+      });
+
+      it('returns this', () => {
+        expect(happyFace.setPercentageWithAnimation(10)).to.eql(happyFace);
       });
     });
   });
