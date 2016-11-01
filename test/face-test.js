@@ -65,6 +65,7 @@ describe('Face module', () => {
   [HAPPY_VALUE, SAD_VALUE, NEUTRAL_VALUE].forEach((mood) => {
     describe(`${mood} face`, () => {
       let circleFace;
+      let circleBackgroundFace;
       let face;
       let rtEye;
       let ltEye;
@@ -74,6 +75,8 @@ describe('Face module', () => {
       beforeEach('selects face', () => {
         face = new Face(mood);
         circleFace = face.svg.querySelector('[data-type=face]');
+        circleBackgroundFace =
+          face.svg.querySelector('[data-type=backgroundFace]');
         [ltEye, rtEye] = face.svg.querySelectorAll('[data-type=eye]') || [];
         mouth = face.svg.querySelector('[data-type=mouth]');
         nose = face.svg.querySelector('[data-type=nose]');
@@ -94,7 +97,7 @@ describe('Face module', () => {
       });
 
       it('has a default background color', () => {
-        const actual = circleFace.getAttribute('fill');
+        const actual = circleBackgroundFace.getAttribute('fill');
 
         expect(actual).to.be.equal('#ffffff');
       });

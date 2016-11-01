@@ -21,10 +21,14 @@ export const DEFAULT_HASH_COLOR_FACES = {
   [SAD_VALUE]: '#e74c3c',
   [NEUTRAL_VALUE]: '#f1c40f',
 };
-export const DEFAULT_BASIC_FACE_PROPERTIES = {
+export const DEFAULT_BASIC_FACE_BACKGROUND_PROPERTIES = {
   fill: '#ffffff',
+  'data-type': 'backgroundFace',
+};
+export const DEFAULT_BASIC_FACE_PROPERTIES = {
   strokeWidth: 5,
   'data-type': 'face',
+  fillOpacity: 0,
 };
 export const DEFAULT_BASIC_EYE_PROPERTIES = {
   'data-type': 'eye',
@@ -49,3 +53,7 @@ export const DEFAULT_PERCENTAGE_PROPERTIES = {
   fontFamily: 'arial',
   fontSize: '18px',
 };
+
+
+export const OPACITY_50 = 0.5;
+export const ONE_SECOND = 1000;

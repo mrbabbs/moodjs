@@ -2,21 +2,24 @@ import Snap from 'snapsvg';
 import { privateEnv } from './helpers/private-env';
 import Percentage from './Percentage';
 import {
-  MOOD,
-  HAPPY_VALUE,
-  SAD_VALUE,
-  NEUTRAL_VALUE,
-  FACE_SHAPE,
-  LEFT_EYE_SHAPE,
-  RIGHT_EYE_SHAPE,
-  MOUTH_SHAPE,
-  NOSE_SHAPE,
-  DEFAULT_HASH_COLOR_FACES,
-  DEFAULT_BASIC_FACE_PROPERTIES,
   DEFAULT_BASIC_EYE_PROPERTIES,
+  DEFAULT_BASIC_FACE_BACKGROUND_PROPERTIES,
+  DEFAULT_BASIC_FACE_PROPERTIES,
   DEFAULT_BASIC_MOUTH_PROPERTIES,
   DEFAULT_BASIC_NOSE_PROPERTIES,
   DEFAULT_FACE_SCALING,
+  DEFAULT_HASH_COLOR_FACES,
+  FACE_SHAPE,
+  HAPPY_VALUE,
+  LEFT_EYE_SHAPE,
+  MOOD,
+  MOUTH_SHAPE,
+  NEUTRAL_VALUE,
+  NOSE_SHAPE,
+  RIGHT_EYE_SHAPE,
+  SAD_VALUE,
+  ONE_SECOND,
+  OPACITY_50,
 } from './constants';
 
 
@@ -84,14 +87,16 @@ function _createEye(paper, { shape, color }) {
 }
 
 function _drawFace(paper, mood) {
-  const face = paper.circle(...FACE_SHAPE);
-  const attrFace = Object.assign(
-    {},
-    DEFAULT_BASIC_FACE_PROPERTIES,
-    { stroke: DEFAULT_HASH_COLOR_FACES[mood] }
-  );
+  const background = paper.circle(...FACE_SHAPE);
+  background.attr({
+    ...DEFAULT_BASIC_FACE_BACKGROUND_PROPERTIES,
+  });
 
-  face.attr(attrFace);
+  const face = paper.circle(...FACE_SHAPE);
+  face.attr({
+    ...DEFAULT_BASIC_FACE_PROPERTIES,
+    stroke: DEFAULT_HASH_COLOR_FACES[mood],
+  });
 
   const ltEye = _createEye(paper, {
     shape: LEFT_EYE_SHAPE,
@@ -110,11 +115,36 @@ function _drawFace(paper, mood) {
     color: DEFAULT_HASH_COLOR_FACES[mood],
   });
 
-  const group = paper.g(face, mouth, ltEye, rtEye, nose);
-
+  const group = paper.g(background, face, mouth, ltEye, rtEye, nose);
   group.attr(DEFAULT_FACE_SCALING);
 
   return { face, nose, mouth, ltEye, rtEye };
+}
+
+function _calculatePercentage(radius, percentage) {
+  const angle = 360 * percentage / 100 / 2;
+  let height = Math.sin(Math.PI * (angle/180)) * radius;
+  percentage > 50 ? height = radius * 2 - height : height;
+
+  return ((height * 100) / (radius * 2));
+}
+
+function _fillFace(paper, face, color, percentage, duration = ONE_SECOND) {
+  const gradient =
+    paper.gradient(`l(0, 1, 0, 0) ${color} :0-rgba(100%, 100%, 100%, 0):0.1`);
+  const radius = 100;
+  const calculatedPercentage = _calculatePercentage(radius, percentage);
+  const fillIt = val => {
+    const el = gradient.selectAll('stop');
+    el[0].attr({offset: val + '%'});
+  };
+
+  face.attr({
+    fill: gradient,
+    fillOpacity: OPACITY_50,
+  });
+
+  Snap.animate(0, calculatedPercentage, fillIt, duration, mina.bounce);
 }
 
 class Face {
@@ -135,8 +165,10 @@ class Face {
       },
     });
 
-    const { nose } = _drawFace(_private(this).paper, type);
+    const { nose, face } = _drawFace(_private(this).paper, type);
+
     _private(this).nose = nose;
+    _private(this).face = face;
 
     // set public properties
   }
@@ -180,23 +212,25 @@ class Face {
   }
 
   setPercentage(value = 0) {
-    if (isNaN(Number(value))) {
-      throw Error('The value is not a number.');
-    }
-
-    _private(this).text.setValue(value);
-
-    return this;
+    return this.setPercentageWithAnimation(value, 0);
   }
 
-  setPercentageWithAnimation(value = 0) {
+  setPercentageWithAnimation(value = 0, duration = ONE_SECOND) {
     if (isNaN(Number(value))) {
       throw Error('The value is not a number.');
     }
 
-    Snap.animate(0, value, (val) => {
-      this.setPercentage(val);
-    }, 1000);
+    _fillFace(
+      this.paper,
+      _private(this).face,
+      DEFAULT_HASH_COLOR_FACES[_private(this).type],
+      value,
+      duration
+    );
+
+    Snap.animate(0, value, val => {
+      _private(this).text.setValue(val);
+    }, duration, mina.bounce);
 
     return this;
   }
