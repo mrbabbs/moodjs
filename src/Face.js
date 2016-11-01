@@ -129,19 +129,22 @@ function _calculatePercentage(radius, percentage) {
   return ((height * 100) / (radius * 2));
 }
 
-function _fillFace(paper, face, color, percentage) {
+function _fillFace(paper, face, color, percentage, duration = ONE_SECOND) {
   const gradient =
     paper.gradient(`l(0, 1, 0, 0) ${color} :0-rgba(100%, 100%, 100%, 0):0.1`);
   const radius = 100;
+  const calculatedPercentage = _calculatePercentage(radius, percentage);
+  const fillIt = val => {
+    const el = gradient.selectAll('stop');
+    el[0].attr({offset: val + '%'});
+  };
+
   face.attr({
     fill: gradient,
     fillOpacity: OPACITY_50,
   });
 
-  Snap.animate(0, _calculatePercentage(radius, percentage), val => {
-    const el = gradient.selectAll('stop');
-    el[0].attr({offset: val + '%'});
-  }, ONE_SECOND, mina.bounce);
+  Snap.animate(0, calculatedPercentage, fillIt, duration, mina.bounce);
 }
 
 class Face {
@@ -209,16 +212,10 @@ class Face {
   }
 
   setPercentage(value = 0) {
-    if (isNaN(Number(value))) {
-      throw Error('The value is not a number.');
-    }
-
-    _private(this).text.setValue(value);
-
-    return this;
+    return this.setPercentageWithAnimation(value, 0);
   }
 
-  setPercentageWithAnimation(value = 0) {
+  setPercentageWithAnimation(value = 0, duration = ONE_SECOND) {
     if (isNaN(Number(value))) {
       throw Error('The value is not a number.');
     }
@@ -227,12 +224,13 @@ class Face {
       this.paper,
       _private(this).face,
       DEFAULT_HASH_COLOR_FACES[_private(this).type],
-      value
+      value,
+      duration
     );
 
-    Snap.animate(0, value, (val) => {
-      this.setPercentage(val);
-    }, ONE_SECOND);
+    Snap.animate(0, value, val => {
+      _private(this).text.setValue(val);
+    }, duration, mina.bounce);
 
     return this;
   }
