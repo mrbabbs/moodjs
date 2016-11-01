@@ -7,7 +7,7 @@ import {
   DEFAULT_BASIC_FACE_PROPERTIES,
   DEFAULT_BASIC_MOUTH_PROPERTIES,
   DEFAULT_BASIC_NOSE_PROPERTIES,
-  DEFAULT_FACE_SCALING,
+  DEFAULT_GROUP_SCALING,
   DEFAULT_HASH_COLOR_FACES,
   FACE_SHAPE,
   HAPPY_VALUE,
@@ -16,10 +16,10 @@ import {
   MOUTH_SHAPE,
   NEUTRAL_VALUE,
   NOSE_SHAPE,
-  RIGHT_EYE_SHAPE,
-  SAD_VALUE,
   ONE_SECOND,
   OPACITY_50,
+  RIGHT_EYE_SHAPE,
+  SAD_VALUE,
 } from './constants';
 
 
@@ -116,7 +116,16 @@ function _drawFace(paper, mood) {
   });
 
   const group = paper.g(background, face, mouth, ltEye, rtEye, nose);
-  group.attr(DEFAULT_FACE_SCALING);
+  const matrix = Snap.matrix(
+    DEFAULT_GROUP_SCALING,
+    0,
+    0,
+    DEFAULT_GROUP_SCALING,
+    FACE_SHAPE[0] * (1 - DEFAULT_GROUP_SCALING),
+    0
+  )
+  // group.attr(DEFAULT_FACE_SCALING);
+  group.transform(matrix);
 
   return { face, nose, mouth, ltEye, rtEye };
 }

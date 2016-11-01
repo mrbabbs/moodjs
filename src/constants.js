@@ -41,12 +41,14 @@ export const DEFAULT_BASIC_NOSE_PROPERTIES = {
   'data-type': 'nose',
   strokeWidth: 5,
 };
-export const DEFAULT_FACE_SCALING = {
-  transform: 's0.75',
-};
 
 // Percentage properties
-export const DEFAULT_PERCENTAGE_OPTIONS_TEXT = { x: 0, y: 95, text: '0%', color: '#27ae60' };
+export const DEFAULT_PERCENTAGE_OPTIONS_TEXT = {
+  x: 5,
+  y: 95,
+  text: '0%',
+  color: '#27ae60',
+};
 export const DEFAULT_PERCENTAGE_PROPERTIES = {
   fill: '#27ae60',
   stroke: '#27ae60',
@@ -57,3 +59,4 @@ export const DEFAULT_PERCENTAGE_PROPERTIES = {
 
 export const OPACITY_50 = 0.5;
 export const ONE_SECOND = 1000;
+export const DEFAULT_GROUP_SCALING = 0.8;
