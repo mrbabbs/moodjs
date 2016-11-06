@@ -8,7 +8,7 @@
     "start": "ws",
     "commit": "git-cz",
     "pre-build": "rm -r dist && mkdir dist",
-    "build": "npm run pre-build && cp src/mood.js dist/mood-es6.js && npm run build-browser",
+    "build": "npm run pre-build && cp src/Mood.js dist/mood-es6.js && npm run build-browser",
     "build-browser": "browserify src/mood-browser.js -o dist/mood-browser.js -s MoodJS -t babelify",
     "test": "mochify --recursive --transform babelify",
     "test-watch": "npm test -- --watch",

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import MoodJS from '../../src/mood';
+import MoodJS from '../../src/Mood';
 import Face from '../../src/Face';
 
 describe('MoodJS', () => {
