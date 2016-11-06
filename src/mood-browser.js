@@ -1,4 +1,4 @@
-import MoodJS from './mood.js';
+import MoodJS from './Mood.js';
 
 export const {
   version,

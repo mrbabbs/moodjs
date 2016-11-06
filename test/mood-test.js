@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import MoodJS from '../src/mood';
+import MoodJS from '../src/Mood';
 import { version } from '../package.json';
 import { createSVGElement } from './lib/helpers';
 import Face from '../src/Face';
