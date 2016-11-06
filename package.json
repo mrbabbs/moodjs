@@ -5,7 +5,7 @@
   "main": "dist/mood-es6.js",
   "scripts": {
     "prestart": "npm run build-browser",
-    "start": "ws",
+    "start": "live-server --no-browser --port=4000 --entry-file='public/index.html' --mount=/lib:dist",
     "commit": "git-cz",
     "pre-build": "rm -r dist && mkdir dist",
     "build": "npm run pre-build && cp src/Mood.js dist/mood-es6.js && npm run build-browser",
@@ -56,7 +56,7 @@
     "eslint-plugin-jsx-a11y": "0.6.2",
     "eslint-plugin-react": "4.3.0",
     "ghooks": "1.2.1",
-    "local-web-server": "1.2.3",
+    "live-server": "^1.1.0",
     "mocha": "2.4.5",
     "mochify": "2.17.0",
     "npm": "^3.10.8"
