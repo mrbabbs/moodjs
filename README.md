@@ -1,5 +1,7 @@
 # MoodJS
 
+![alt tag](https://github.com/mrbabbs/moodjs/public/moodjs-screen.gif)
+
 MoodJS is a library that allows to create faces to share data based on the
 three different moods: *Happy, Sad, Neutral*.
 
@@ -24,7 +26,7 @@ You can clone the repository and use the file inside the folder `dist`
 
 #### Node Environment
 
-You can install MoodJS by npm
+You can install *MoodJS* by npm
 
 ```javascript
 import Moodjs from 'moodjs';
@@ -57,7 +59,7 @@ assign the ref to the var `sadFace`
 var sadFace = MoodJS.add('sad', '.sadFace');
 ```
 
-Add a neutral face to the **first**  DOM `div` element and assign the ref to
+Add a neutral face to the **first**  DOM element `div`and assign the ref to
 the var `neutralFace`
 
 ```
