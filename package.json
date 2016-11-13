@@ -1,6 +1,6 @@
 {
   "name": "moodjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create a face and share data",
   "main": "src/Mood.js",
   "scripts": {
