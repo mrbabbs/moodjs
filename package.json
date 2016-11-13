@@ -1,7 +1,7 @@
 {
   "name": "moodjs",
   "version": "0.0.1",
-  "description": "A face as cart to show emotional states",
+  "description": "Create a face and share data based",
   "main": "src/Mood.js",
   "scripts": {
     "prestart": "npm run build-browser",
@@ -28,6 +28,9 @@
     "happy",
     "sad",
     "neutral",
+    "library",
+    "data",
+    "visualization",
     "javascript"
   ],
   "author": "Giovanni Esposito <gioesps@gmail.com> (http://mrbabbs.com/)",
