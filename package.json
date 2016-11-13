@@ -2,7 +2,7 @@
   "name": "moodjs",
   "version": "0.0.1",
   "description": "A face as cart to show emotional states",
-  "main": "dist/mood-es6.js",
+  "main": "src/Mood.js",
   "scripts": {
     "prestart": "npm run build-browser",
     "start": "live-server --no-browser --port=4000 --entry-file='public/index.html' --mount=/lib:dist",
