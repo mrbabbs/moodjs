@@ -188,8 +188,6 @@ class Face {
 
   get svg() { return _private(this).svg; }
 
-  get paper() { return _private(this).paper; }
-
   hideNose() {
     _private(this).nose.attr({ display: 'none' });
 
@@ -230,7 +228,7 @@ class Face {
     }
 
     _fillFace(
-      this.paper,
+      _private(this).paper,
       _private(this).face,
       DEFAULT_HASH_COLOR_FACES[_private(this).type],
       value,
