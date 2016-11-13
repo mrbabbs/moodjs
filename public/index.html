@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Page</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/solarized-dark.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+  <script src="lib/mood-browser.js"></script>
+  <style>
+    .face-container {
+      width: 24%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+ <h1>MoodJS test page</h1>
+
+ <div id="faces">
+   <div class="face-container">
+     <div id="happyFace"></div>
+   </div>
+   <div class="face-container">
+     <div id="sadFace"></div>
+   </div>
+   <div class="face-container">
+     <div id="neutralFace"></div>
+   </div>
+   <div class="face-container">
+     <div id="newFace"></div>
+   </div>
+ </div>
+ <br>
+ <p>
+    Open the console and type commands to try the library. Some examples:
+    <pre>
+      <code class="hljs javascript">
+        var happyFaces = MoodJS.get('happy'); // Array that contains list of happy faces
+        var happyOne = happyFaces[0];
+
+        happyOne.setPercentageWithAnimation(50); // set value with animation
+        happyOne.setPercentage(75); // set value withou animation
+
+        happyOne.hideNose(); // hide nose
+
+        // change color and show the nose
+        happyOne
+        .changeColorNose('#001122')
+        .show();
+
+        // add a new happy face to DOM element with id='newFace'
+        var newFace = MoodJS.add('happy', '#newFace')
+          .setPercentageWithAnimation(100)
+          .changeColorNose('#3476a3');
+      </code>
+    </pre>
+
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <script>
+    MoodJS.add('happy', '#happyFace')
+      .setPercentageWithAnimation(22);
+    MoodJS.add('sad', '#sadFace')
+      .setPercentageWithAnimation(52);
+    MoodJS.add('neutral', '#neutralFace')
+      .setPercentage(74)
+      .changeColorNose('#999999');
+  </script>
+</body>
+</html>
