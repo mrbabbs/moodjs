@@ -43,10 +43,6 @@ describe('Face module', () => {
       }).to.be.throw(/No valid type/);
     });
 
-    it('has #paper', () => {
-      expect(happyFace.paper).to.be.an.instanceOf(Object);
-    });
-
     it('has #id', () => {
       expect(happyFace.id).to.match(/^mood-happy-(\w)+/);
       expect(sadFace.id).to.match(/^mood-sad-(\w)+/);
