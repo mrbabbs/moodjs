@@ -1,7 +1,7 @@
 {
   "name": "moodjs",
   "version": "0.1.0",
-  "description": "Create a face and share data based",
+  "description": "Create a face and share data",
   "main": "src/Mood.js",
   "scripts": {
     "prestart": "npm run build-browser",
