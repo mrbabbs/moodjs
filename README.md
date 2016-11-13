@@ -1,6 +1,6 @@
 # MoodJS
 
-![alt tag](https://github.com/mrbabbs/moodjs/public/moodjs-screen.gif)
+![MoodJS](./public/moodjs-screen.gif?raw=true "MoodJS")
 
 MoodJS is a library that allows to create faces to share data based on the
 three different moods: *Happy, Sad, Neutral*.
