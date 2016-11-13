@@ -8,8 +8,8 @@
     "start": "live-server --no-browser --port=4000 --entry-file='public/index.html' --mount=/lib:dist",
     "commit": "git-cz",
     "pre-build": "rm -r dist && mkdir dist",
-    "build": "npm run pre-build && cp src/Mood.js dist/mood-es6.js && npm run build-browser",
-    "build-browser": "browserify src/mood-browser.js -o dist/mood-browser.js -s MoodJS -t babelify",
+    "build": "npm run pre-build && npm run build-browser",
+    "build-browser": "browserify src/mood-browser.js -s MoodJS -t babelify | uglifyjs -c -o dist/mood-browser.min.js",
     "test": "mochify --recursive --transform babelify",
     "test-watch": "npm test -- --watch",
     "test-specific": "mochify --transform babelify --",
@@ -62,7 +62,8 @@
     "live-server": "^1.1.0",
     "mocha": "2.4.5",
     "mochify": "2.17.0",
-    "npm": "^3.10.8"
+    "npm": "^3.10.8",
+    "uglifyjs": "^2.4.10"
   },
   "config": {
     "commitizen": {
